@@ -1,0 +1,145 @@
+.hidden {
+    display: none;
+}
+
+.checkbox-group,
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.checkbox-group label,
+.radio-group label {
+    font-weight: normal;
+}
+
+.form-group input + input {
+    margin-top: 10px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f8;
+    color: #222;
+}
+
+.hero {
+    background: linear-gradient(135deg, #163c7a, #1f7a8c);
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.3rem;
+}
+
+.container {
+    max-width: 850px;
+    margin: 40px auto;
+    background: white;
+    padding: 35px;
+    border-radius: 14px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.checkbox-group,
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.checkbox-group label,
+.radio-group label {
+    font-weight: normal;
+}
+
+.checkbox-group input,
+.radio-group input {
+    width: auto;
+    margin-right: 6px;
+}
+
+.form-group input + input {
+    margin-top: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    background: #163c7a;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #102d5c;
+}
+
+.resumo-pagamento {
+    background: #eef3f7;
+    padding: 18px;
+    border-radius: 10px;
+    margin-bottom: 24px;
+}
+
+.resumo-pagamento p {
+    margin-bottom: 8px;
+}
+
+.observacao {
+    font-weight: normal;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin: 20px;
+        padding: 25px;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+}
