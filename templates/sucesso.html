@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscrição Recebida - EMEERJ 2026</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/sucesso.css') }}">
+</head>
+
+<body>
+
+    <main class="sucesso-container">
+
+        <section class="sucesso-card">
+
+            <div class="sucesso-icone">
+                ✓
+            </div>
+
+            <h1>Inscrição recebida!</h1>
+
+            <p class="sucesso-mensagem">
+                Obrigado, <strong>{{ nome_social }}</strong>. Sua inscrição foi registrada com sucesso.
+            </p>
+
+            <div class="sucesso-info">
+                <p>
+                    <span>Status:</span>
+                    <strong>{{ status_pagamento }}</strong>
+                </p>
+
+                <p>
+                    <span>Valor total:</span>
+                    <strong>R$ {{ valor_total }}</strong>
+                </p>
+            </div>
+
+            <p class="sucesso-aviso">
+                Sua inscrição ficará como <strong>pendente</strong> até a confirmação do pagamento.
+            </p>
+
+            <a href="/" class="btn-voltar">
+                Voltar para o formulário
+            </a>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

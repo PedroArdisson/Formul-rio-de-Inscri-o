@@ -222,13 +222,14 @@ def receber_inscricao():
     print(f"Valor total: R$ {valor_total}")
     print("--------------------------------\n")
 
-    return f"""
-        <h1>Inscrição recebida com sucesso!</h1>
-        <p>Obrigado, {nome_social}.</p>
-        <p>Valor total: R$ {valor_total:.2f}</p>
-        <p>Status do pagamento: {status_pagamento}</p>
-        <a href="/">Voltar para o formulário</a>
-    """
+    valor_total_formatado = f"{valor_total:.2f}".replace(".", ",")
+
+    return render_template(
+        "sucesso.html",
+        nome_social=nome_social,
+        valor_total=valor_total_formatado,
+        status_pagamento=status_pagamento
+    )
 
 
 if __name__ == "__main__":
