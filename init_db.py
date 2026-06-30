@@ -50,6 +50,8 @@ CREATE TABLE IF NOT EXISTS inscricoes (
 
     status_pagamento TEXT NOT NULL DEFAULT 'PENDENTE',
 
+    termo_lgpd TEXT NOT NULL,
+
     data_inscricao TEXT NOT NULL
 )
 """)

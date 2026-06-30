@@ -143,3 +143,27 @@ button:hover {
         font-size: 2.2rem;
     }
 }
+
+/* ==============================
+   TERMO LGPD
+============================== */
+
+.termo-lgpd {
+    background: #eef3f7;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+}
+
+.termo-lgpd label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-weight: normal;
+    line-height: 1.4;
+}
+
+.termo-lgpd input {
+    width: auto;
+    margin-top: 4px;
+}

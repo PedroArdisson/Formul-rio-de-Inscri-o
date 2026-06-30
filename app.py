@@ -71,6 +71,9 @@ def receber_inscricao():
 
     status_pagamento = "PENDENTE"
     data_inscricao = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+    
+    # Termo LGPD
+    termo_lgpd = request.form.get("termo_lgpd")
 
     # Salva no SQLite
     conn = sqlite3.connect("database.db")
@@ -119,9 +122,10 @@ def receber_inscricao():
             valor_total,
 
             status_pagamento,
+            termo_lgpd,
             data_inscricao
         )
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     """, (
         nome_completo,
         email,
@@ -164,6 +168,7 @@ def receber_inscricao():
         valor_total,
 
         status_pagamento,
+        termo_lgpd,
         data_inscricao
     ))
 
@@ -204,7 +209,8 @@ def receber_inscricao():
         "valor_inscricao": VALOR_INSCRICAO,
         "valor_camisa": valor_camisa,
         "valor_total": valor_total,
-        "status_pagamento": status_pagamento
+        "status_pagamento": status_pagamento,
+        "termo_lgpd": termo_lgpd
     }
 
     try:
