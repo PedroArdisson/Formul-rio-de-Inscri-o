@@ -1,7 +1,7 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 import sqlite3
 from datetime import datetime
-
+from mercado_pago_service import criar_preferencia_pagamento
 from sheets_service import enviar_inscricao_para_planilha
 
 app = Flask(__name__)
@@ -228,15 +228,62 @@ def receber_inscricao():
     print(f"Valor total: R$ {valor_total}")
     print("--------------------------------\n")
 
+    try:
+        pagamento = criar_preferencia_pagamento(
+            id_inscricao=id_inscricao,
+            nome_completo=nome_completo,
+            email=email,
+            valor_inscricao=VALOR_INSCRICAO,
+            valor_camisa=valor_camisa,
+            valor_total=valor_total,
+            quer_camisa=quer_camisa,
+            tamanho_camisa=tamanho_camisa
+        )
+
+        print("Preferência criada no Mercado Pago:")
+        print(pagamento)
+
+        return redirect(pagamento["link_pagamento"])
+
+    except Exception as erro:
+        print("Erro ao criar pagamento no Mercado Pago:")
+        print(erro)
+
     valor_total_formatado = f"{valor_total:.2f}".replace(".", ",")
 
     return render_template(
         "sucesso.html",
         nome_social=nome_social,
         valor_total=valor_total_formatado,
-        status_pagamento=status_pagamento
+        status_pagamento="PENDENTE - ERRO AO GERAR PAGAMENTO"
     )
 
+@app.route("/pagamento/sucesso")
+def pagamento_sucesso():
+    return render_template(
+        "sucesso.html",
+        nome_social="Participante",
+        valor_total="",
+        status_pagamento="PAGAMENTO APROVADO"
+    )
+
+
+@app.route("/pagamento/falha")
+def pagamento_falha():
+    return """
+        <h1>Pagamento não concluído</h1>
+        <p>Não conseguimos confirmar seu pagamento.</p>
+        <a href="/">Voltar para o formulário</a>
+    """
+
+
+@app.route("/pagamento/pendente")
+def pagamento_pendente():
+    return """
+        <h1>Pagamento pendente</h1>
+        <p>Seu pagamento ainda está aguardando confirmação.</p>
+        <a href="/">Voltar para o formulário</a>
+    """
 
 if __name__ == "__main__":
     app.run(debug=True)
